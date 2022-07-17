@@ -70,7 +70,7 @@
         <CheckBoxPreference
             android:key="pref_show_language_switch_key"
             android:title="@string/show_language_switch_key"
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:persistent="true" />
 
         <CheckBoxPreference

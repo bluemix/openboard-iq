@@ -400,6 +400,7 @@ public final class KeyboardLayoutSet {
         public KeyboardLayoutSet build() {
             if (mParams.mSubtype == null)
                 throw new RuntimeException("KeyboardLayoutSet subtype is not specified");
+            Log.d("KeyboardLayoutSet", "mKeyboardLayoutSetName: " + mParams.mKeyboardLayoutSetName);
             final int xmlId = getXmlId(mResources, mParams.mKeyboardLayoutSetName);
             try {
                 parseKeyboardLayoutSet(mResources, xmlId);
