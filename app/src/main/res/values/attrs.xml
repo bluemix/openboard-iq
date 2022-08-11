@@ -408,6 +408,8 @@
             <enum name="italic" value="2" />
             <enum name="boldItalic" value="3" />
         </attr>
+
+        <attr name="keyFont" format="reference"/>
         <!-- Size of the text for one letter keys. If specified as fraction, the text size is
              measured in the proportion of key height. -->
         <attr name="keyLetterSize" format="dimension|fraction" />

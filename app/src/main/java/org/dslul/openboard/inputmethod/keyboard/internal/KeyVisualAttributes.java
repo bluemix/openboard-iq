@@ -18,6 +18,7 @@ package org.dslul.openboard.inputmethod.keyboard.internal;
 
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.util.SparseIntArray;
 
 import org.dslul.openboard.inputmethod.latin.R;
@@ -55,6 +56,7 @@ public final class KeyVisualAttributes {
     public final float mHintLabelOffCenterRatio;
 
     private static final int[] VISUAL_ATTRIBUTE_IDS = {
+        R.styleable.Keyboard_Key_keyFont,
         R.styleable.Keyboard_Key_keyTypeface,
         R.styleable.Keyboard_Key_keyLetterSize,
         R.styleable.Keyboard_Key_keyLabelSize,
@@ -99,12 +101,25 @@ public final class KeyVisualAttributes {
     }
 
     private KeyVisualAttributes(@Nonnull final TypedArray keyAttr) {
-        if (keyAttr.hasValue(R.styleable.Keyboard_Key_keyTypeface)) {
-            mTypeface = Typeface.defaultFromStyle(
-                    keyAttr.getInt(R.styleable.Keyboard_Key_keyTypeface, Typeface.NORMAL));
+        if (keyAttr.hasValue(R.styleable.Keyboard_Key_keyFont)) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                mTypeface = keyAttr.getFont(R.styleable.Keyboard_Key_keyFont);
+            } else {
+                mTypeface = Typeface.defaultFromStyle(
+                        keyAttr.getInt(R.styleable.Keyboard_Key_keyTypeface, Typeface.NORMAL));
+            }
         } else {
             mTypeface = null;
         }
+
+
+
+//        Log.i("KeyVisualAttributes", "R.styleable.Keyboard_Key_keyTypeface: " + R.styleable.Keyboard_Key_keyTypeface);
+        Log.i("KeyVisualAttributes", "keyAttr: " + keyAttr);
+        Log.i("KeyVisualAttributes", "keyAttr.hasValue(R.styleable.Keyboard_Key_keyFont): " + keyAttr.hasValue(R.styleable.Keyboard_Key_keyFont));
+        Log.i("KeyVisualAttributes", "R.styleable.Keyboard_Key_keyFont: " + R.styleable.Keyboard_Key_keyFont);
+//        Log.i("KeyVisualAttributes", "keyAttr.getFont(R.styleable.Keyboard_Key_keyFont): " + keyAttr.getFont(R.styleable.Keyboard_Key_keyFont));
+        Log.i("KeyVisualAttributes", "mTypeface: " + mTypeface);
 
         mLetterRatio = ResourceUtils.getFraction(keyAttr,
                 R.styleable.Keyboard_Key_keyLetterSize);

@@ -171,6 +171,8 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
 
     public MainKeyboardView(final Context context, final AttributeSet attrs) {
         this(context, attrs, R.attr.mainKeyboardViewStyle);
+
+        Log.i("MainKeyboardView", "initialized...");
     }
 
     public MainKeyboardView(final Context context, final AttributeSet attrs, final int defStyle) {
@@ -861,7 +863,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         final int width = key.getWidth();
         final int height = key.getHeight();
         paint.setTextAlign(Align.CENTER);
-        paint.setTypeface(Typeface.DEFAULT);
+        paint.setTypeface(paint.getTypeface());
         paint.setTextSize(mLanguageOnSpacebarTextSize);
         final String language = layoutLanguageOnSpacebar(paint, keyboard.mId.mSubtype, width);
         // Draw language text with shadow

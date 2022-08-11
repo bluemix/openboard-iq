@@ -38,6 +38,8 @@
         <!-- This keyBackground is needed to run unit tests based on {@link InputTestBase}. -->
         <!-- TODO: Apply default {@link KeyboardTheme} to {@link InputTestBase} and remove this. -->
         <item name="keyBackground">@drawable/btn_keyboard_key_klp</item>
+        <item name="keyFont">@font/mikhak</item>
+<!--        <item name="keyFont">@font/bahij</item>-->
         <item name="keyTypeface">normal</item>
         <!-- A negative value to disable key text shadow layer. -->
         <item name="keyTextShadowRadius">-1.0</item>

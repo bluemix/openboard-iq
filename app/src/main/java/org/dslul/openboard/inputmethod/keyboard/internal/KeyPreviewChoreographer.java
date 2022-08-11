@@ -17,6 +17,7 @@
 package org.dslul.openboard.inputmethod.keyboard.internal;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -93,6 +94,8 @@ public final class KeyPreviewChoreographer {
     private void placeKeyPreview(final Key key, final KeyPreviewView keyPreviewView,
             final KeyboardIconsSet iconsSet, final KeyDrawParams drawParams,
             final int keyboardViewWidth, final int[] originCoords) {
+
+        Log.i("KeyPreviewChoreographer", "placeKeyPreview...");
         keyPreviewView.setPreviewVisual(key, iconsSet, drawParams);
         keyPreviewView.measure(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

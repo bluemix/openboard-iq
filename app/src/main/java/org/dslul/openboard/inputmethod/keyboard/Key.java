@@ -736,16 +736,23 @@ public class Key implements Comparable<Key> {
 
     @Nonnull
     public final Typeface selectTypeface(final KeyDrawParams params) {
-        switch (mLabelFlags & LABEL_FLAGS_FONT_MASK) {
-        case LABEL_FLAGS_FONT_NORMAL:
-            return Typeface.DEFAULT;
-        case LABEL_FLAGS_FONT_MONO_SPACE:
-            return Typeface.MONOSPACE;
-        case LABEL_FLAGS_FONT_DEFAULT:
-        default:
-            // The type-face is specified by keyTypeface attribute.
-            return params.mTypeface;
-        }
+        Log.i("Key", "mLabelFlags & LABEL_FLAGS_FONT_MASK: " + (mLabelFlags & LABEL_FLAGS_FONT_MASK));
+        Log.i("Key", "LABEL_FLAGS_FONT_NORMAL: " + LABEL_FLAGS_FONT_NORMAL);
+        Log.i("Key", "LABEL_FLAGS_FONT_MONO_SPACE: " + LABEL_FLAGS_FONT_MONO_SPACE);
+        Log.i("Key", "LABEL_FLAGS_FONT_DEFAULT: " + LABEL_FLAGS_FONT_DEFAULT);
+        Log.i("Key", "params.mTypeface: " + params.mTypeface);
+        return params.mTypeface;
+
+//        switch (mLabelFlags & LABEL_FLAGS_FONT_MASK) {
+//        case LABEL_FLAGS_FONT_NORMAL:
+//            return Typeface.DEFAULT;
+//        case LABEL_FLAGS_FONT_MONO_SPACE:
+//            return Typeface.MONOSPACE;
+//        case LABEL_FLAGS_FONT_DEFAULT:
+//        default:
+//            // The type-face is specified by keyTypeface attribute.
+//            return params.mTypeface;
+//        }
     }
 
     public final int selectTextSize(final KeyDrawParams params) {
@@ -813,7 +820,9 @@ public class Key implements Comparable<Key> {
 
     @Nonnull
     public Typeface selectPreviewTypeface(final KeyDrawParams params) {
-        if (previewHasLetterSize()) {
+        boolean _previewHasLetterSize = previewHasLetterSize();
+        Log.i("Key", "_previewHasLetterSize: " + _previewHasLetterSize);
+        if (_previewHasLetterSize) {
             return selectTypeface(params);
         }
         return Typeface.DEFAULT_BOLD;

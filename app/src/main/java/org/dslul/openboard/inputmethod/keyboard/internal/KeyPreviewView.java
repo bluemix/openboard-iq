@@ -18,10 +18,12 @@ package org.dslul.openboard.inputmethod.keyboard.internal;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.TextView;
@@ -49,6 +51,9 @@ public class KeyPreviewView extends TextView {
     public KeyPreviewView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setGravity(Gravity.CENTER);
+
+        Log.i("KeyPreviewView", "initialized");
+
     }
 
     public void setPreviewVisual(final Key key, final KeyboardIconsSet iconsSet,
@@ -64,7 +69,11 @@ public class KeyPreviewView extends TextView {
         setCompoundDrawables(null, null, null, null);
         setTextColor(drawParams.mPreviewTextColor);
         setTextSize(TypedValue.COMPLEX_UNIT_PX, key.selectPreviewTextSize(drawParams));
-        setTypeface(key.selectPreviewTypeface(drawParams));
+
+        final Typeface _selectedTypeface = key.selectPreviewTypeface(drawParams);
+        Log.i("KeyPreviewView", "_selectedTypeface: " + _selectedTypeface);
+
+        setTypeface(_selectedTypeface);
         // TODO Should take care of temporaryShiftLabel here.
         setTextAndScaleX(key.getPreviewLabel());
     }
